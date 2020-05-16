@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+// import axios from 'axios';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -13,12 +15,35 @@ const Register = () => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
       console.log('Passwords do not match');
     } else {
-      console.log(formData);
+      console.log('SUCCESS');
+      // // DEMONSTRATION CODE - CONFIRM USER CREATION
+      // // THIS WILL BE IMPLEMENTED IN A REDUX ACTION
+      // const newUser = {
+      //   name,
+      //   email,
+      //   password,
+      // };
+
+      // try {
+      //   const config = {
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //   };
+
+      //   const body = JSON.stringify(newUser);
+      //   // call the API
+      //   const res = await axios.post('/api/users', body, config);
+      //   // get the response token in the browser console
+      //   console.log(res.data);
+      // } catch (err) {
+      //   console.error(err.response.data);
+      // }
     }
   };
 
@@ -76,7 +101,7 @@ const Register = () => {
         <input type='submit' className='btn btn-primary' value='Register' />
       </form>
       <p className='my-1'>
-        Already have an account? <a href='login.html'>Sign In</a>
+        Already have an account? <Link to='/login'>Sign In</Link>
       </p>
     </Fragment>
   );
